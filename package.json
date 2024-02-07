@@ -1,0 +1,27 @@
+{
+  "name": "dynamic-multikey-map",
+  "type": "module",
+  "packageManager": "bun@1.0.23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    }
+  },
+  "files": ["lib", "LICENSE"],
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "vitest": "^1.2.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "vitest",
+    "compile:js": "esbuild --bundle --target=safari11 --outfile=./lib/index.js --format=esm ./src/index.ts",
+    "compile:ts": "tsc -p tsconfig.build.json",
+    "compile": "bun run compile:js && bun run compile:ts"
+  }
+}
